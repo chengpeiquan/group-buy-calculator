@@ -12,6 +12,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+    - name: npm install and build
+      run: |
+        npm install
+        npm run build
     - name: github-ci
       uses: crazy-max/ghaction-github-pages@v2
       with:
