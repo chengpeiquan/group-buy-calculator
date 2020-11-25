@@ -311,8 +311,9 @@ export default defineComponent({
   display flex
   justify-content space-between
   align-items flex-start
+  width 100%
   max-width 1200px
-  margin 20px auto
+  margin 40px auto
   .ant-list
     width 100%
   .ant-card
@@ -393,4 +394,17 @@ export default defineComponent({
   .placeholder
     width 10px
     opacity 0
+
+// 手机样式
+.mode-mobile
+  .data
+    flex-direction column
+    max-width 100%
+    margin 0
+    .placeholder
+      display none
+    .ant-card
+      width 100%
+      &:first-child
+        margin-bottom $margin
 </style>
