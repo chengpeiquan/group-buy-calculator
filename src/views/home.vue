@@ -256,7 +256,9 @@ export default defineComponent({
       // 计算折扣
       let dis: number | string = 0;
       dis = (actualPrice.value / priceTotal.value) * 100;
-      // dis = (actualPrice.value / itemTotal) * 100;
+      if ( isNaN(dis) ) {
+        dis = 0;
+      }
       dis = dis.toFixed(2);
       dis = Number(dis)
       discountRate.value = 100 - dis;
