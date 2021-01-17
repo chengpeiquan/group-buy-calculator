@@ -1,16 +1,16 @@
 <template>
-  <!-- <router-view/> -->
-  <Home />
+  <router-view />
+  <!-- <Home /> -->
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watchEffect } from 'vue'
-import Home from '@views/home.vue'
+import { defineComponent, onMounted } from 'vue'
+// import Home from '@views/home.vue'
 
 export default defineComponent({
-  components: {
-    Home
-  },
+  // components: {
+  //   Home
+  // },
   setup () {
     /** 
      * 根据访问设备添加样式名
