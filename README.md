@@ -10,4 +10,4 @@
 
 ## 界面预览
 
-![](https://chengpeiquan.com/wp-content/uploads/2020/12/1-1.png)
+![](https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/12/1-1.png)
