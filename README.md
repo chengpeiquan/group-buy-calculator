@@ -1,6 +1,6 @@
 # group-buy-calculator
 
-目前除了美团之外，其他的外卖app（像饿了么啊、瑞幸啊、麦当劳肯德基啊）都没提供自动计算账单的功能，自己每次拉excel算的蛋疼，所以写了这个。
+一些外卖 App 或者拼单买东西都没提供自动计算账单的功能，自己每次拉 Excel 计算也很麻烦，所以写了这个计算器。
 
 ## 在线体验
 
@@ -10,4 +10,4 @@
 
 ## 界面预览
 
-![](https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/12/1-1.png)
+![group-buy-calculator](https://cdn.jsdelivr.net/gh/chengpeiquan/assets-storage/img/2020/12/1-1.png)
