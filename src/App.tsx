@@ -6,7 +6,8 @@ import ToggleTheme from '@/components/ToggleTheme'
 import InputForm from './components/InputForm'
 import { useTheme } from '@/hooks'
 import 'antd/dist/reset.css'
-import './App.css'
+import '@/assets/less/var.less'
+import '@/assets/less/global.less'
 
 const { Content } = Layout
 
@@ -29,7 +30,10 @@ export default function App() {
         </Header>
 
         <Content>
-          <InputForm />
+          <div className="container">
+            <InputForm />
+            <InputForm />
+          </div>
         </Content>
 
         <Footer />
