@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 import banner from 'vite-plugin-banner'
 import pkg from './package.json'
 
@@ -9,6 +9,11 @@ export default defineConfig({
   base: '/group-buy-calculator/',
   server: {
     port: 1949,
+  },
+  css: {
+    modules: {
+      localsConvention: 'camelCaseOnly',
+    },
   },
   resolve: {
     alias: {

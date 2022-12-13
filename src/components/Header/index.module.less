@@ -1,0 +1,29 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  box-sizing: border-box;
+  padding: 0 var(--gbc-w-space);
+}
+
+.nav-list {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  a {
+    color: var(--gbc-c-text);
+    font-size: 16px;
+    opacity: 0.8;
+    margin-right: var(--gbc-w-space);
+    &:hover {
+      color: var(--gbc-c-text);
+      text-decoration: underline;
+      opacity: 1;
+    }
+  }
+}
