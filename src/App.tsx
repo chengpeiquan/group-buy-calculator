@@ -1,9 +1,10 @@
 import { ConfigProvider, Layout, theme } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 import ToggleTheme from '@/components/ToggleTheme'
-import InputForm from './components/InputForm'
+import { GlobalContextProvider } from '@/context'
+import InputForm from '@/components/InputForm'
 import { useTheme } from '@/hooks'
 import 'antd/dist/reset.css'
 import '@/assets/less/var.less'
@@ -19,9 +20,6 @@ export default function App() {
       locale={zhCN}
       theme={{
         algorithm: isDark ? theme.darkAlgorithm : theme.defaultAlgorithm,
-        token: {
-          colorPrimary: '#ff0000',
-        },
       }}
     >
       <Layout>
@@ -30,10 +28,12 @@ export default function App() {
         </Header>
 
         <Content>
-          <div className="container">
-            <InputForm />
-            <InputForm />
-          </div>
+          <GlobalContextProvider>
+            <div className="container">
+              <InputForm />
+              {/* <InputForm /> */}
+            </div>
+          </GlobalContextProvider>
         </Content>
 
         <Footer />

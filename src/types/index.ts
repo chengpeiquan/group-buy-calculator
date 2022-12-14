@@ -3,3 +3,8 @@ export interface ShoppingListItem {
   price: number
   result: number
 }
+
+export interface SharedExpensesInfo {
+  packagingFee: number
+  deliveryFee: number
+}

@@ -4,6 +4,11 @@
   margin: 0 auto;
 }
 
+html {
+  height: auto;
+  min-height: 100vh;
+}
+
 body {
   background-color: var(--gbc-c-bg);
 }
@@ -16,22 +21,79 @@ body {
 .container {
   display: flex;
   justify-content: space-between;
-  width: 1200px;
+  width: 1280px;
   max-width: 100%;
   margin: var(--gbc-w-space) auto;
-  .wrap {
+  .main-wrap {
     display: flex;
     flex: 1;
     flex-direction: column;
     margin: var(--gbc-w-space-xs);
-  }
-  .form-table {
-    .list {
-      display: flex;
-      flex-direction: column;
-      .item {
+    .form-table {
+      .list {
         display: flex;
+        flex-direction: column;
+        padding: 0;
+        .item {
+          display: flex;
+          align-items: center;
+          margin-bottom: var(--gbc-w-space-sm);
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .label {
+            display: flex;
+            align-items: center;
+            width: 47%;
+            margin-right: var(--gbc-w-space);
+            .text {
+              display: flex;
+              flex-shrink: 0;
+              margin-right: 4px;
+            }
+          }
+          .btn-remove {
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            margin-top: 2px;
+            &:hover {
+              color: var(--gbc-c-hover);
+            }
+          }
+        }
+      }
+      .shared-list {
+        flex-direction: row;
+        margin-bottom: var(--gbc-w-space);
+        .item {
+          width: 48.5%;
+          margin-bottom: 0;
+          .label {
+            width: 100%;
+          }
+        }
+      }
+      .btn-add {
+        display: flex;
+        justify-content: flex-end;
         align-items: center;
+        width: 100%;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          color: var(--gbc-c-hover);
+        }
+        span {
+          margin-left: 4px;
+        }
+      }
+    }
+    .btn-result {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        outline: none;
       }
     }
   }
