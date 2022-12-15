@@ -6,7 +6,7 @@ import SharedExpenses from './components/SharedExpenses'
 import ActualPayment from './components/ActualPayment'
 
 function InputForm() {
-  const { shoppingList, updateShoppingList, sharedExpenses, getResult } =
+  const { shoppingList, setShoppingList, sharedExpenses, getResult } =
     useContext(GlobalContext)
 
   return (
@@ -15,7 +15,7 @@ function InputForm() {
         {/* 购买信息 */}
         <ShoppingInfo
           shoppingList={shoppingList}
-          updateShoppingList={updateShoppingList}
+          setShoppingList={setShoppingList}
         />
         {/* 购买信息 */}
 

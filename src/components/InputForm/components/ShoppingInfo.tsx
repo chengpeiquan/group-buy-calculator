@@ -1,40 +1,65 @@
-import { nanoid } from 'nanoid'
+import { Dispatch, SetStateAction, useEffect } from 'react'
 import { Input } from 'antd'
 import { defaultItem } from '@/assets/data'
-import { Dispatch, SetStateAction, useEffect } from 'react'
 import type { ShoppingListItem } from '@/types'
 
 interface Props {
   shoppingList: ShoppingListItem[]
-  updateShoppingList: Dispatch<SetStateAction<ShoppingListItem[]>>
+  setShoppingList: Dispatch<SetStateAction<ShoppingListItem[]>>
 }
 
-export default function ShoppingInfo({
-  shoppingList,
-  updateShoppingList,
-}: Props) {
+export default function ShoppingInfo({ shoppingList, setShoppingList }: Props) {
+  function setValue(
+    index: number,
+    key: keyof ShoppingListItem,
+    value: ShoppingListItem[keyof ShoppingListItem]
+  ): void {
+    setShoppingList((list) => {
+      return list.map((item, i) => {
+        if (i === index) {
+          if (key === 'name') {
+            item[key] = String(value)
+          } else {
+            item[key] = Number(value)
+          }
+        }
+        return item
+      })
+    })
+  }
+
   function add() {
-    updateShoppingList((list) => [...list, { ...defaultItem }])
+    setShoppingList((list) => [...list, { ...defaultItem }])
   }
 
   function remove(index: number) {
-    console.log('before', [...shoppingList])
-    updateShoppingList((list) => list.splice(index, 1))
-    console.log('after', shoppingList)
+    setShoppingList((list) => list.filter((l, i) => i !== index))
   }
+
+  useEffect(() => {
+    console.log('useEffect')
+    if (shoppingList.length < 2) {
+      add()
+    }
+  }, [shoppingList])
 
   return (
     <section className="form-table">
       <ul className="list">
         {shoppingList.map((item, index) => {
           return (
-            <div className="item" key={nanoid()}>
+            <div className="item" key={`shopping-item-${index}`}>
               <label className="label">
                 <span className="text">物品名：</span>
                 <Input
                   value={item.name}
+                  defaultValue={item.name}
                   placeholder="请填写物品名称"
                   allowClear
+                  onChange={(e) => {
+                    console.log(index, e.target.value)
+                    setValue(index, 'name', e.target.value)
+                  }}
                 />
               </label>
 

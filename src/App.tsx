@@ -6,9 +6,6 @@ import ToggleTheme from '@/components/ToggleTheme'
 import { GlobalContextProvider } from '@/context'
 import InputForm from '@/components/InputForm'
 import { useTheme } from '@/hooks'
-import 'antd/dist/reset.css'
-import '@/assets/less/var.less'
-import '@/assets/less/global.less'
 
 const { Content } = Layout
 

@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react'
-import { defaultItem } from '@/assets/data'
 import type { ReactNode } from 'react'
 import type { SharedExpensesInfo, ShoppingListItem } from '@/types'
 
@@ -10,19 +9,17 @@ interface Props {
 export const GlobalContext = createContext<Record<string, any>>({})
 
 export function GlobalContextProvider({ children }: Props) {
-  const [shoppingList, updateShoppingList] = useState<ShoppingListItem[]>(
-    Array(2).fill({ ...defaultItem })
-  )
+  const [shoppingList, setShoppingList] = useState<ShoppingListItem[]>([])
 
   const [sharedExpenses] = useState<SharedExpensesInfo>({
     packagingFee: 0,
     deliveryFee: 0,
   })
 
-  const [actualCost, updateActualCost] = useState(0)
+  const [actualCost, setActualCost] = useState(0)
 
   function getResult() {
-    updateActualCost((cost) => cost++)
+    setActualCost((cost) => cost++)
     console.log(actualCost)
   }
 
@@ -30,10 +27,10 @@ export function GlobalContextProvider({ children }: Props) {
     <GlobalContext.Provider
       value={{
         shoppingList,
-        updateShoppingList,
+        setShoppingList,
         sharedExpenses,
         actualCost,
-        updateActualCost,
+        setActualCost,
         getResult,
       }}
     >
