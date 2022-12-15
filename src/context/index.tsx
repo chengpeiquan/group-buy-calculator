@@ -15,9 +15,9 @@ export function GlobalContextProvider({ children }: Props) {
     { ...defaultItem },
   ])
 
-  const [sharedExpenses] = useState<SharedExpensesInfo>({
-    packagingFee: 0,
-    deliveryFee: 0,
+  const [sharedExpenses, setSharedExpenses] = useState<SharedExpensesInfo>({
+    packagingFee: '',
+    deliveryFee: '',
   })
 
   const [actualCost, setActualCost] = useState(0)
@@ -33,6 +33,7 @@ export function GlobalContextProvider({ children }: Props) {
         shoppingList,
         setShoppingList,
         sharedExpenses,
+        setSharedExpenses,
         actualCost,
         setActualCost,
         getResult,

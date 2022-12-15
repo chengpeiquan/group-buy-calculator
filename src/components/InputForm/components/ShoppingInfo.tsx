@@ -1,7 +1,7 @@
-import { Dispatch, SetStateAction } from 'react'
 import { Input } from 'antd'
 import { defaultItem } from '@/assets/data'
-import type { ShoppingListItem } from '@/types'
+import type { Dispatch, SetStateAction } from 'react'
+import type { ShoppingListItem, ShoppingListItemKey } from '@/types'
 
 interface Props {
   shoppingList: ShoppingListItem[]
@@ -11,16 +11,16 @@ interface Props {
 export default function ShoppingInfo({ shoppingList, setShoppingList }: Props) {
   function setValue(
     index: number,
-    key: keyof ShoppingListItem,
-    value: ShoppingListItem[keyof ShoppingListItem]
+    key: ShoppingListItemKey,
+    value: ShoppingListItem[ShoppingListItemKey]
   ): void {
     setShoppingList((list) => {
       return list.map((item, i) => {
         if (i === index) {
-          if (key === 'name') {
-            item[key] = String(value)
-          } else {
+          if (key === 'result') {
             item[key] = Number(value)
+          } else {
+            item[key] = String(value)
           }
         }
         return item
@@ -49,20 +49,20 @@ export default function ShoppingInfo({ shoppingList, setShoppingList }: Props) {
                   defaultValue={item.name}
                   placeholder="请填写物品名称"
                   allowClear
-                  onChange={(e) => {
-                    console.log(index, e.target.value)
-                    setValue(index, 'name', e.target.value)
-                  }}
+                  onChange={(e) => setValue(index, 'name', e.target.value)}
                 />
               </label>
 
               <label className="label">
                 <span className="text">原价格：</span>
                 <Input
-                  value={item.price}
                   type="number"
+                  value={item.price}
+                  defaultValue={item.price}
+                  placeholder="请填写物品原价"
                   prefix="￥"
                   suffix="元"
+                  onChange={(e) => setValue(index, 'price', e.target.value)}
                 />
               </label>
 

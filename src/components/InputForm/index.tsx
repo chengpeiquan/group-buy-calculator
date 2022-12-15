@@ -6,8 +6,13 @@ import SharedExpenses from './components/SharedExpenses'
 import ActualPayment from './components/ActualPayment'
 
 function InputForm() {
-  const { shoppingList, setShoppingList, sharedExpenses, getResult } =
-    useContext(GlobalContext)
+  const {
+    shoppingList,
+    setShoppingList,
+    sharedExpenses,
+    setSharedExpenses,
+    getResult,
+  } = useContext(GlobalContext)
 
   return (
     <div className="main-wrap">
@@ -22,7 +27,10 @@ function InputForm() {
         <Divider orientation="left">公摊费用</Divider>
 
         {/* 公摊费用 */}
-        <SharedExpenses sharedExpenses={sharedExpenses} />
+        <SharedExpenses
+          sharedExpenses={sharedExpenses}
+          setSharedExpenses={setSharedExpenses}
+        />
         {/* 公摊费用 */}
 
         <Divider orientation="left">实际支付</Divider>

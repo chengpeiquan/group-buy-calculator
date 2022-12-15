@@ -1,11 +1,26 @@
 import { Input } from 'antd'
-import type { SharedExpensesInfo } from '@/types'
+import type { Dispatch, SetStateAction } from 'react'
+import type { SharedExpensesInfo, SharedExpensesInfoKey } from '@/types'
 
 interface Props {
   sharedExpenses: SharedExpensesInfo
+  setSharedExpenses: Dispatch<SetStateAction<SharedExpensesInfo>>
 }
 
-export default function ShoppingInfo({ sharedExpenses }: Props) {
+export default function SharedExpenses({
+  sharedExpenses,
+  setSharedExpenses,
+}: Props) {
+  function setValue(
+    key: SharedExpensesInfoKey,
+    value: SharedExpensesInfo[SharedExpensesInfoKey]
+  ): void {
+    setSharedExpenses((info) => {
+      info[key] = value
+      return { ...info }
+    })
+  }
+
   return (
     <section className="form-table">
       <ul className="list shared-list">
@@ -13,10 +28,12 @@ export default function ShoppingInfo({ sharedExpenses }: Props) {
           <label className="label">
             <span className="text">包装费：</span>
             <Input
-              value={sharedExpenses.packagingFee}
               type="number"
+              value={sharedExpenses.packagingFee}
+              defaultValue={sharedExpenses.packagingFee}
               prefix="￥"
               suffix="元"
+              onChange={(e) => setValue('packagingFee', e.target.value)}
             />
           </label>
         </li>
@@ -25,10 +42,12 @@ export default function ShoppingInfo({ sharedExpenses }: Props) {
           <label className="label">
             <span className="text">配送费：</span>
             <Input
-              value={sharedExpenses.deliveryFee}
               type="number"
+              value={sharedExpenses.deliveryFee}
+              defaultValue={sharedExpenses.deliveryFee}
               prefix="￥"
               suffix="元"
+              onChange={(e) => setValue('deliveryFee', e.target.value)}
             />
           </label>
         </li>

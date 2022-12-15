@@ -28,7 +28,7 @@ export default function App() {
           <GlobalContextProvider>
             <div className="container">
               <InputForm />
-              {/* <InputForm /> */}
+              <InputForm />
             </div>
           </GlobalContextProvider>
         </Content>

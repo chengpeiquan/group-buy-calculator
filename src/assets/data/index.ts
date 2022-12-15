@@ -2,6 +2,6 @@ import type { ShoppingListItem } from '@/types'
 
 export const defaultItem: ShoppingListItem = {
   name: '',
-  price: 0,
+  price: '',
   result: 0,
 }

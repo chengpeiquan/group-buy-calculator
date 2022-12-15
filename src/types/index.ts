@@ -1,10 +1,14 @@
 export interface ShoppingListItem {
   name: string
-  price: number
+  price: string
   result: number
 }
 
+export type ShoppingListItemKey = keyof ShoppingListItem
+
 export interface SharedExpensesInfo {
-  packagingFee: number
-  deliveryFee: number
+  packagingFee: string
+  deliveryFee: string
 }
+
+export type SharedExpensesInfoKey = keyof SharedExpensesInfo
