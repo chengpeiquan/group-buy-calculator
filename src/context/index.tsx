@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react'
+import { defaultItem } from '@/assets/data'
 import type { ReactNode } from 'react'
 import type { SharedExpensesInfo, ShoppingListItem } from '@/types'
 
@@ -9,7 +10,10 @@ interface Props {
 export const GlobalContext = createContext<Record<string, any>>({})
 
 export function GlobalContextProvider({ children }: Props) {
-  const [shoppingList, setShoppingList] = useState<ShoppingListItem[]>([])
+  const [shoppingList, setShoppingList] = useState<ShoppingListItem[]>([
+    { ...defaultItem },
+    { ...defaultItem },
+  ])
 
   const [sharedExpenses] = useState<SharedExpensesInfo>({
     packagingFee: 0,

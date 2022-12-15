@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { Input } from 'antd'
 import { defaultItem } from '@/assets/data'
 import type { ShoppingListItem } from '@/types'
@@ -35,13 +35,6 @@ export default function ShoppingInfo({ shoppingList, setShoppingList }: Props) {
   function remove(index: number) {
     setShoppingList((list) => list.filter((l, i) => i !== index))
   }
-
-  useEffect(() => {
-    console.log('useEffect')
-    if (shoppingList.length < 2) {
-      add()
-    }
-  }, [shoppingList])
 
   return (
     <section className="form-table">
