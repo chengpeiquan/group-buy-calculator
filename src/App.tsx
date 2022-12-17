@@ -1,16 +1,23 @@
+import { useEffect } from 'react'
 import { ConfigProvider, Layout, theme } from 'antd'
 import zhCN from 'antd/locale/zh_CN'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import ToggleTheme from '@/components/ToggleTheme'
-import { GlobalContextProvider } from '@/context'
 import InputForm from '@/components/InputForm'
-import { useTheme } from '@/hooks'
+import ResultPreview from '@/components/ResultPreview'
+import { GlobalContextProvider } from '@/context'
+import { usePlatform, useTheme } from '@/hooks'
 
 const { Content } = Layout
 
 export default function App() {
   const { isDark, toggleTheme } = useTheme()
+  const { isMobile, updatePlatform } = usePlatform()
+
+  useEffect(() => {
+    updatePlatform()
+  }, [isMobile])
 
   return (
     <ConfigProvider
@@ -28,7 +35,7 @@ export default function App() {
           <GlobalContextProvider>
             <div className="container">
               <InputForm />
-              <InputForm />
+              <ResultPreview />
             </div>
           </GlobalContextProvider>
         </Content>

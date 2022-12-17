@@ -2,15 +2,8 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import react from '@vitejs/plugin-react'
 import banner from 'vite-plugin-banner'
+import { manualChunks } from './scripts/build'
 import pkg from './package.json'
-
-const manualChunks = {}
-for (const key in pkg.dependencies) {
-  if (Object.prototype.hasOwnProperty.call(pkg.dependencies, key)) {
-    manualChunks[key] = key
-  }
-}
-console.log(manualChunks)
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -21,23 +14,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        // 其中一种方式
-        manualChunks: {
-          antd: ['antd'],
-          react: ['react'],
-          'react-dom': ['react-dom'],
-        },
-
-        // 另外一种方式
-        // manualChunks(id) {
-        //   if (id.includes('node_modules')) {
-        //     return id
-        //       .toString()
-        //       .split('node_modules/')[1]
-        //       .split('/')[0]
-        //       .toString()
-        //   }
-        // },
+        manualChunks,
       },
     },
   },

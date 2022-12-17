@@ -31,6 +31,7 @@ export default function SharedExpenses({
               type="number"
               value={sharedExpenses.packagingFee}
               defaultValue={sharedExpenses.packagingFee}
+              placeholder="请填写包装费"
               prefix="￥"
               suffix="元"
               onChange={(e) => setValue('packagingFee', e.target.value)}
@@ -45,6 +46,7 @@ export default function SharedExpenses({
               type="number"
               value={sharedExpenses.deliveryFee}
               defaultValue={sharedExpenses.deliveryFee}
+              placeholder="请填写配送费"
               prefix="￥"
               suffix="元"
               onChange={(e) => setValue('deliveryFee', e.target.value)}

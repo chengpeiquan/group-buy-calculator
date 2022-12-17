@@ -1,34 +1,29 @@
 import { Input } from 'antd'
-import type { SharedExpensesInfo } from '@/types'
+import type { Dispatch, SetStateAction } from 'react'
 
 interface Props {
-  sharedExpenses: SharedExpensesInfo
+  actualExpenses: string
+  setActualExpenses: Dispatch<SetStateAction<string>>
 }
 
-export default function ShoppingInfo({ sharedExpenses }: Props) {
+export default function ShoppingInfo({
+  actualExpenses,
+  setActualExpenses,
+}: Props) {
   return (
     <section className="form-table">
       <ul className="list shared-list">
         <li className="item">
           <label className="label">
-            <span className="text">包装费：</span>
+            <span className="text">总支出：</span>
             <Input
-              value={sharedExpenses.packagingFee}
               type="number"
+              value={actualExpenses}
+              defaultValue={actualExpenses}
+              placeholder="请填写总支出"
               prefix="￥"
               suffix="元"
-            />
-          </label>
-        </li>
-
-        <li className="item">
-          <label className="label">
-            <span className="text">配送费：</span>
-            <Input
-              value={sharedExpenses.deliveryFee}
-              type="number"
-              prefix="￥"
-              suffix="元"
+              onChange={(e) => setActualExpenses(e.target.value)}
             />
           </label>
         </li>

@@ -1,5 +1,9 @@
 import { createContext, useState } from 'react'
 import { defaultItem } from '@/assets/data'
+import {
+  calculateOriginalTotalExpenses,
+  calculateDiscountRate,
+} from '@/libs/calculator'
 import type { ReactNode } from 'react'
 import type { SharedExpensesInfo, ShoppingListItem } from '@/types'
 
@@ -20,11 +24,46 @@ export function GlobalContextProvider({ children }: Props) {
     deliveryFee: '',
   })
 
-  const [actualCost, setActualCost] = useState(0)
+  const [actualExpenses, setActualExpenses] = useState('')
+  const [originalTotalExpenses, setOriginalTotalExpenses] = useState(0)
+  const [discountRate, setDiscountRate] = useState(0)
 
+  /**
+   * 计算最终结果
+   */
   function getResult() {
-    setActualCost((cost) => cost++)
-    console.log(actualCost)
+    // 原价总费用
+    const _originalTotalExpenses = calculateOriginalTotalExpenses(
+      shoppingList,
+      sharedExpenses
+    )
+    setOriginalTotalExpenses(() => _originalTotalExpenses)
+
+    // 折扣率
+    const _discountRate = calculateDiscountRate(
+      Number(actualExpenses),
+      _originalTotalExpenses
+    )
+    setDiscountRate(() => _discountRate)
+
+    // 平摊的配送费价格
+    const averageDeliveryFee =
+      Number(sharedExpenses.deliveryFee) / shoppingList.length
+
+    // 平摊的打包费价格
+    const averagePackagingFee =
+      Number(sharedExpenses.packagingFee) / shoppingList.length
+
+    // 更新物品折扣后的最终价格
+    setShoppingList((list) => {
+      return list.map((item) => {
+        const result =
+          (Number(item.price) + averageDeliveryFee + averagePackagingFee) *
+          (1 - _discountRate)
+        item.result = result.toFixed(2)
+        return item
+      })
+    })
   }
 
   return (
@@ -34,8 +73,10 @@ export function GlobalContextProvider({ children }: Props) {
         setShoppingList,
         sharedExpenses,
         setSharedExpenses,
-        actualCost,
-        setActualCost,
+        actualExpenses,
+        setActualExpenses,
+        originalTotalExpenses,
+        discountRate,
         getResult,
       }}
     >

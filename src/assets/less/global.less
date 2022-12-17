@@ -1,16 +1,23 @@
+html {
+  height: auto;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--gbc-c-bg);
+}
+
 #root {
   width: 100vw;
   min-height: 100vh;
   margin: 0 auto;
 }
 
-html {
-  height: auto;
-  min-height: 100vh;
-}
-
-body {
-  background-color: var(--gbc-c-bg);
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .ant-layout-content {
@@ -53,11 +60,20 @@ body {
             }
           }
           .btn-remove {
+            color: var(--gbc-c-desc);
             cursor: pointer;
             transition: all 0.2s ease-in-out;
             margin-top: 2px;
-            &:hover {
-              color: var(--gbc-c-hover);
+            > div {
+              display: flex;
+              flex-shrink: 0;
+              align-items: center;
+              span {
+                margin-left: var(--gbc-w-space-xs);
+              }
+              &:hover {
+                color: var(--gbc-c-hover);
+              }
             }
           }
         }
@@ -92,6 +108,74 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    .result-overview {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-top: var(--gbc-w-space);
+      .line {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        margin-bottom: var(--gbc-w-space-xs);
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+.platform-mobile {
+  .container {
+    flex-direction: column;
+    margin: 0 auto;
+    .main-wrap {
+      .form-table {
+        .list {
+          flex-direction: column;
+          .item {
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: var(--gbc-w-space-lg);
+            &:last-child {
+              margin-bottom: 0;
+            }
+            .label {
+              width: 100%;
+              margin-right: 0;
+              margin-bottom: var(--gbc-w-space-xs);
+            }
+            .btn-remove {
+              display: flex;
+              justify-content: flex-end;
+              width: 100%;
+              > div {
+                &:hover {
+                  color: var(--gbc-c-desc);
+                }
+              }
+            }
+          }
+        }
+        .shared-list {
+          .item {
+            margin-bottom: var(--gbc-w-space-xs);
+            &:last-child {
+              margin-bottom: 0;
+            }
+            .label {
+              margin-bottom: 0;
+            }
+          }
+        }
+        .btn-add {
+          &:hover {
+            color: var(--gbc-c-text);
+          }
+        }
+      }
     }
   }
 }
