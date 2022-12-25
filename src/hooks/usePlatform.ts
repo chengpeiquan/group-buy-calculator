@@ -1,11 +1,7 @@
 import { useState } from 'react'
+import { checkIsMobile, watchResize } from '@bassist/utils'
 
 export function usePlatform() {
-  function checkIsMobile() {
-    return /iPhone|phone|android|iPod|pad|iPad/i.test(
-      window.navigator.userAgent.toLowerCase()
-    )
-  }
   const [isMobile, setIsMobile] = useState(checkIsMobile())
 
   function updatePlatform() {
@@ -17,12 +13,7 @@ export function usePlatform() {
     body!.className = className
   }
 
-  window.addEventListener('load', updatePlatform, false)
-  window.addEventListener(
-    'orientationchange' in window ? 'orientationchange' : 'resize',
-    updatePlatform,
-    false
-  )
+  watchResize(updatePlatform)
 
   return {
     isMobile,

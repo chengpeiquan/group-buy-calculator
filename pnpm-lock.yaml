@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@bassist/utils': ^0.5.1
   '@types/node': ^18.11.15
   '@types/react': ^18.0.26
   '@types/react-dom': ^18.0.9
@@ -21,6 +22,7 @@ specifiers:
   vite-plugin-banner: ^0.7.0
 
 dependencies:
+  '@bassist/utils': 0.5.1
   antd: 5.0.7_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -332,6 +334,12 @@ packages:
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
     dev: true
+
+  /@bassist/utils/0.5.1:
+    resolution: {integrity: sha512-vljQ2mjnxgp2Eo5uQ7BXdhbx2jVdCyE+LGEH5VD7lOHktp5fAnLEKvO+KaVDs4rv46UCPNAQvaKEPD7UBiA7VQ==}
+    dependencies:
+      '@withtypes/mime': 0.1.2
+    dev: false
 
   /@ctrl/tinycolor/3.5.0:
     resolution: {integrity: sha512-tlJpwF40DEQcfR/QF+wNMVyGMaO9FQp6Z1Wahj4Gk3CJQYHwA2xVG7iKDFdW6zuxZY9XWOpGcfNCTsX4McOsOg==}
@@ -894,6 +902,12 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@withtypes/mime/0.1.2:
+    resolution: {integrity: sha512-PB9BfZGzwblUONJY0LiOwsHCA6uV3DIPj/w9ReekdHxPOl0VdUFgI5s4avKycuuq9Gf5Nz2ZPA2O36GAUzlMPA==}
+    dependencies:
+      mime: 3.0.0
+    dev: false
 
   /acorn-jsx/5.3.2_acorn@8.8.1:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -1982,6 +1996,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /mime/3.0.0:
+    resolution: {integrity: sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==}
+    engines: {node: '>=10.0.0'}
+    hasBin: true
+    dev: false
 
   /minimatch/3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
